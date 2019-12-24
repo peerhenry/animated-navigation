@@ -17,13 +17,16 @@ export default {}
   display flex
   flex-direction column
   text-align left
+  white-space nowrap
+  box-sizing content-box
   a
     display inline
     margin-top 1rem
-    margin-left 1rem
+    margin 1rem 2rem 0 1rem
     color white
     text-decoration none
     font-size 18px
+    font-weight bold
     &:hover
       color yellow
 </style>

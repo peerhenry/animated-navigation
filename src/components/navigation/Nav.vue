@@ -22,6 +22,8 @@ export default {}
     margin-right 1rem
     margin-left 2rem
     font-size 24px
+    font-weight bold
+    transition color 0.1s linear
     &:hover
       color yellow
 </style>

@@ -27,6 +27,9 @@ export default new Vuex.Store({
   },
   actions: {},
   getters: {
+    hasSubroutes: state => {
+      return state.path === '/beta'
+    },
     getSubroutes: () => {
       // const parts = state.path.split('/')
       return []

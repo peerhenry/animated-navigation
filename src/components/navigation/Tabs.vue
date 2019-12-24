@@ -17,4 +17,5 @@ export default {}
 
 .tab
   margin-right 1rem
+  font-weight bold
 </style>
