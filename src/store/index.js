@@ -1,11 +1,39 @@
-import Vue from "vue";
-import Vuex from "vuex";
+import Vue from 'vue'
+import Vuex from 'vuex'
 
-Vue.use(Vuex);
+Vue.use(Vuex)
+
+const siteMap = {
+  home: {},
+  alpha: {},
+  beta: {
+    subroutes: {
+      two: {
+        subroutes: {
+          bee: {},
+        },
+      },
+    },
+  },
+}
 
 export default new Vuex.Store({
-  state: {},
-  mutations: {},
+  state: {
+    siteMap,
+    path: '/',
+  },
+  mutations: {
+    setPath: (state, payload) => (state.path = payload),
+  },
   actions: {},
-  modules: {}
-});
+  getters: {
+    getSubroutes: () => {
+      // const parts = state.path.split('/')
+      return []
+    },
+    getTabs: () => {
+      return []
+    },
+  },
+  modules: {},
+})
