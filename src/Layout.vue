@@ -7,7 +7,7 @@
     .layout-tabs(:class="{'span-2': !hasSubroutes}")
       Tabs
       div {{ path }}
-      transition(name="fade" mode="out-in")
+      transition(:name="pageTransition" mode="out-in")
         router-view
 </template>
 
@@ -19,8 +19,13 @@ import { mapState, mapGetters } from 'vuex'
 
 export default {
   components: { Nav, SideNav, Tabs },
+  data() {
+    return {
+      transitionName: 'fade',
+    }
+  },
   computed: {
-    ...mapState(['path']),
+    ...mapState(['path', 'pageTransition']),
     ...mapGetters(['hasSubroutes']),
   },
 }
@@ -37,11 +42,14 @@ export default {
 .layout-tabs
   display inline-block
   width 100%
+  overflow-x hidden
 
-// transitions
+// Vue transitions
+
+transition-time = 0.5s
 
 .slide-left-enter-active, .slide-left-leave-active
-  transition all 0.5s ease
+  transition all transition-time ease
 
 .slide-left-enter-to, .slide-left-leave
   width 180px
@@ -52,8 +60,32 @@ export default {
   padding-right 0
 
 .fade-enter-active, .fade-leave-active
-  transition opacity .2s ease
+  transition opacity transition-time ease
 
 .fade-enter, .fade-leave-to
+  opacity 0
+
+amplitude = 200px
+
+.ltr-enter-active, .ltr-leave-active
+  transition all transition-time ease
+
+.ltr-enter
+  transform translate3d(- amplitude, 0, 0)
+  opacity 0
+
+.ltr-leave-to
+  transform translate3d(amplitude, 0, 0)
+  opacity 0
+
+.rtl-enter-active, .rtl-leave-active
+  transition all transition-time ease
+
+.rtl-enter
+  transform translate3d(amplitude, 0, 0)
+  opacity 0
+
+.rtl-leave-to
+  transform translate3d(- amplitude, 0, 0)
   opacity 0
 </style>
